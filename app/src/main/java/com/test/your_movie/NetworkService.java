@@ -1,11 +1,11 @@
-package com.example.testapplication;
+package com.test.your_movie;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.example.testapplication.Interfaces.JSONPlaceHolderApi;
-import com.example.testapplication.Models.Movie;
-import com.example.testapplication.Models.JSONMovieResponse;
+import com.test.your_movie.Interfaces.JSONPlaceHolderApi;
+import com.test.your_movie.Models.Movie;
+import com.test.your_movie.Models.JSONMovieResponse;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

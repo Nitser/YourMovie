@@ -1,4 +1,4 @@
-package com.example.testapplication;
+package com.test.your_movie;
 
 import org.junit.Test;
 

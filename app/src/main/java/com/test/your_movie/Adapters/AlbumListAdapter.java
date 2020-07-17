@@ -1,7 +1,6 @@
-package com.example.testapplication.Adapters;
+package com.test.your_movie.Adapters;
 
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -12,9 +11,9 @@ import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.testapplication.Activities.AlbumInfoActivity;
-import com.example.testapplication.Models.Movie;
-import com.example.testapplication.R;
+import com.test.your_movie.activity.AlbumInfoActivity;
+import com.test.your_movie.Models.Movie;
+import com.test.your_movie.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

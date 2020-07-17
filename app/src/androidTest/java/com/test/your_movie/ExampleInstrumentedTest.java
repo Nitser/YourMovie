@@ -1,4 +1,4 @@
-package com.example.testapplication;
+package com.test.your_movie;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

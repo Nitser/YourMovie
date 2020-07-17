@@ -1,9 +1,9 @@
-package com.example.testapplication;
+package com.test.your_movie;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
 
-import com.example.testapplication.Models.Movie;
+import com.test.your_movie.Models.Movie;
 
 import java.util.List;
 

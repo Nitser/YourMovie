@@ -1,11 +1,9 @@
-package com.example.testapplication.Models;
+package com.test.your_movie.Models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Movie implements Serializable {
     @SerializedName("id")

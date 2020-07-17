@@ -1,6 +1,6 @@
-package com.example.testapplication.Interfaces;
+package com.test.your_movie.Interfaces;
 
-import com.example.testapplication.Models.JSONMovieResponse;
+import com.test.your_movie.Models.JSONMovieResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

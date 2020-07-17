@@ -1,4 +1,4 @@
-package com.example.testapplication;
+package com.test.your_movie;
 
 import android.arch.lifecycle.Observer;
 import android.content.Context;
@@ -18,8 +18,8 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.testapplication.Adapters.AlbumListAdapter;
-import com.example.testapplication.Models.Movie;
+import com.test.your_movie.Adapters.AlbumListAdapter;
+import com.test.your_movie.Models.Movie;
 
 import java.util.List;
 
