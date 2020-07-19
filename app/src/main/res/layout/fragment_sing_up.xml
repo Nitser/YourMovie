@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/sing_up_swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+            <TextView
+                style="@style/LightDescriptionText"
+                android:gravity="center"
+                android:text="@string/fragment_sing_up_description"/>
+
+            <Button
+                android:id="@+id/sing_up_button_add_finger"
+                style="@style/EmptyButton"
+                android:text="@string/fragment_sing_up_button_add_finger" />
+
+            <Button
+                android:id="@+id/sing_up_button_done"
+                style="@style/EntryLightButton"
+                android:textColor="@drawable/button_empty_text_light"
+                android:text="@string/fragment_sing_up_button_done" />
+
+        </LinearLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</layout>

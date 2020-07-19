@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/LightDescriptionText"
+            android:gravity="center"
+            android:layout_marginBottom="40dp"
+            android:text="@string/fragment_sing_in_description"/>
+
+        <EditText
+            android:id="@+id/sing_in_field_login"
+            style="@style/FieldLight"
+            android:hint="@string/fragment_sing_in_field_login"
+            android:inputType="text"
+            android:layout_marginBottom="15dp"/>
+
+        <EditText
+            android:id="@+id/sing_in_field_password"
+            style="@style/FieldLight"
+            android:hint="@string/fragment_sing_in_field_password"
+            android:inputType="textPassword"/>
+
+        <Button
+            android:id="@+id/sing_in_button_done"
+            style="@style/EntryLightButton"
+            android:text="@string/fragment_sing_in_button_done" />
+
+    </LinearLayout>
+
+</layout>

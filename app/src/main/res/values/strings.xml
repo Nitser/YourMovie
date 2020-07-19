@@ -1,6 +1,26 @@
 <resources>
     <string name="app_name">YourMovie</string>
-    <string name="search_by_albums">Поиск по фильмам...</string>
+
+    <string name="fragment_entry_button_sing_in">ВХОД</string>
+    <string name="fragment_entry_button_sing_up">РЕГИСТРАЦИЯ</string>
+
+    <string name="fragment_sing_in_title">Вход</string>
+    <string name="fragment_sing_in_description">Зарегистрироваться с помощью логина/пароля или с помощтю отпечатка пальца</string>
+    <string name="fragment_sing_in_button_done">ГОТОВО</string>
+    <string name="fragment_sing_in_field_login">Логин</string>
+    <string name="fragment_sing_in_field_password">Пароль</string>
+
+    <string name="fragment_sing_up_title">Регистрация</string>
+    <string name="fragment_sing_up_description">Здесь информация о том, что регистрация прошла успешно, и теперь можно добавить отпечаток, если хочется</string>
+    <string name="fragment_sing_up_button_done">ГОТОВО</string>
+    <string name="fragment_sing_up_button_add_finger">Добавить отпечаток</string>
+
+    <string name="fragment_movie_list_no_internet">Нет соединения</string>
+
+    <string name="fragment_movie_list_button_more_info">More Info</string>
+    <string name="fragment_movie_list_button_schedule">Schedule viewing</string>
+
+    <string name="search_by_albums">Поиск по фильмам…</string>
     <string name="start_search">Начни поиск!</string>
     <string name="release_date">Release date:</string>
     <string name="popularity">Popularity:</string>

@@ -1,11 +1,10 @@
-<android.support.v7.widget.CardView
-    android:id="@+id/card_view"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     card_view:cardElevation="7dp"
-    card_view:cardUseCompatPadding="true"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+    card_view:cardUseCompatPadding="true">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -14,23 +13,24 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/photo"
+            android:id="@+id/item_movie_photo"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent"/>
+            card_view:layout_constraintStart_toStartOf="parent"
+            tools:ignore="ContentDescription" />
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/colorWhite">
 
             <LinearLayout
-                android:id="@+id/info"
+                android:id="@+id/item_movie_info"
                 android:padding="8dp"
                 card_view:layout_constraintTop_toTopOf="parent"
                 android:orientation="vertical"
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/item_movie_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -47,7 +47,7 @@
                     style="@style/TitleCardText"/>
 
                 <TextView
-                    android:id="@+id/date"
+                    android:id="@+id/item_movie_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -56,7 +56,7 @@
                     style="@style/DateText"/>
 
                 <TextView
-                    android:id="@+id/description"
+                    android:id="@+id/item_movie_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -68,7 +68,7 @@
             </LinearLayout>
 
             <LinearLayout
-                card_view:layout_constraintTop_toBottomOf="@+id/info"
+                card_view:layout_constraintTop_toBottomOf="@+id/item_movie_info"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 android:orientation="vertical"
                 android:weightSum="2"
@@ -82,13 +82,13 @@
                     android:background="@color/colorBackground"/>
 
                 <TextView
-                    android:id="@+id/more_info"
+                    android:id="@+id/item_movie_more_info"
                     android:padding="10dp"
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="More info" />
+                    android:text="@string/fragment_movie_list_button_more_info" />
 
                 <View
                     android:layout_width="match_parent"
@@ -97,17 +97,17 @@
                     android:background="@color/colorBackground"/>
 
                 <TextView
-                    android:id="@+id/schedule_viewing"
+                    android:id="@+id/item_movie_schedule_viewing"
                     android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="Schedule viewing"/>
+                    android:text="@string/fragment_movie_list_button_schedule"/>
             </LinearLayout>
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>
