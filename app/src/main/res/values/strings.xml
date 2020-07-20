@@ -20,6 +20,13 @@
     <string name="fragment_movie_list_button_more_info">More Info</string>
     <string name="fragment_movie_list_button_schedule">Schedule viewing</string>
 
+    <string name="auth_title">Schedule viewing</string>
+    <string name="auth_subtitle">Schedule viewing</string>
+    <string name="auth_description">Schedule viewing</string>
+
+    <string name="error_msg_auth_error">Error</string>
+    <string name="error_msg_auth_failed">Failed</string>
+
     <string name="search_by_albums">Поиск по фильмам…</string>
     <string name="start_search">Начни поиск!</string>
     <string name="release_date">Release date:</string>

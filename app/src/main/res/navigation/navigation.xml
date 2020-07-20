@@ -20,12 +20,18 @@
         android:label="@string/fragment_sing_in_title" >
         <action
             android:id="@+id/action_singInFragment_to_movieListFragment"
-            app:destination="@id/movieListFragment" />
+            app:destination="@id/movieListFragment"
+            app:popUpTo="@+id/navigation" />
     </fragment>
     <fragment
         android:id="@+id/singUpFragment"
         android:name="com.test.your_movie.ui.sing_up.SingUpFragment"
-        android:label="@string/fragment_sing_up_title" />
+        android:label="@string/fragment_sing_up_title" >
+        <action
+            android:id="@+id/action_singUpFragment_to_movieListFragment"
+            app:destination="@id/movieListFragment"
+            app:popUpTo="@+id/navigation" />
+    </fragment>
     <fragment
         android:id="@+id/movieListFragment"
         android:name="com.test.your_movie.ui.movie_list.MovieListFragment"

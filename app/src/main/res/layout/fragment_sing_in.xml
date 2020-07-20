@@ -29,6 +29,16 @@
             android:hint="@string/fragment_sing_in_field_password"
             android:inputType="textPassword"/>
 
+        <ImageView
+            android:id="@+id/sing_in_button_finger"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_fingerprint_black_24dp"
+            android:tint="@color/colorBackground"
+            android:layout_gravity="center_horizontal"/>
+
         <Button
             android:id="@+id/sing_in_button_done"
             style="@style/EntryLightButton"

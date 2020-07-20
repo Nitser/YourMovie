@@ -80,6 +80,7 @@ class MovieListFragment : Fragment() {
 
         movieListViewModel.getBoardList().observe(viewLifecycleOwner, Observer<ArrayList<MovieModel>> { item ->
             adapter.movies = item
+            adapter.notifyDataSetChanged()
         })
 
         loadMovieList(1)
@@ -98,7 +99,6 @@ class MovieListFragment : Fragment() {
     }
 
     private fun addCalendarEvent(movie: MovieModel, year: Int, month: Int, day: Int) {
-
         val cal = Calendar.getInstance()
         cal.set(year, month, day)
         val intent = Intent(Intent.ACTION_EDIT)
@@ -106,10 +106,6 @@ class MovieListFragment : Fragment() {
         intent.putExtra("beginTime", cal.timeInMillis)
         intent.putExtra("allDay", true)
         intent.putExtra("title", "Lets watch the movie: " + movie.movieTitle)
-        //            intent.putExtra("rrule", "FREQ=YEARLY");
-        //            intent.putExtra("endTime", cal.getTimeInMillis()+60*60*1000);
-        //            intent.putExtra("description", "A Test Description from android app");
-        //            intent.putExtra("eventLocation", "Geolocation");
         requireActivity().startActivity(intent)
     }
 
