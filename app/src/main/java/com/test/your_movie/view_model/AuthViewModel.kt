@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.test.your_movie.database.AppDatabase
-import com.test.your_movie.database.AppRepository
+import com.test.your_movie.database.repository.UserRepository
 import com.test.your_movie.database.entity.User
 import com.test.your_movie.model.Resource
 import com.test.your_movie.utils.SecurePreferenceUtils
@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class AuthViewModel : ViewModel() {
 
-    private lateinit var repository: AppRepository
+    private lateinit var repository: UserRepository
     private val authStatus = MutableLiveData<Resource>()
 
     fun getAuthStatus(): LiveData<Resource> {
@@ -25,7 +25,7 @@ class AuthViewModel : ViewModel() {
 
     fun init(context: Context) {
         val userDao = AppDatabase.getDatabase(context).userDao()
-        repository = AppRepository(userDao)
+        repository = UserRepository(userDao)
     }
 
     private fun insert(user: User) {

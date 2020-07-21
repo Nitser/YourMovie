@@ -20,6 +20,13 @@
     <string name="fragment_movie_list_button_more_info">More Info</string>
     <string name="fragment_movie_list_button_schedule">Schedule viewing</string>
     <string name="menu_home_exit">Выход</string>
+    <string name="menu_bottom_movie_list">Фильмы</string>
+    <string name="menu_bottom_favorite_movie_list">Сохраненное</string>
+
+    <string name="fragment_movie_info_default_title">No title</string>
+    <string name="fragment_movie_info_default_date">No date</string>
+    <string name="fragment_movie_info_default_description">No description</string>
+    <string name="menu_movie_info_favorite">Favorite</string>
 
     <string name="auth_title">Schedule viewing</string>
     <string name="auth_subtitle">Schedule viewing</string>

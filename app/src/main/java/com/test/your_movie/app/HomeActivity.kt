@@ -1,20 +1,31 @@
 package com.test.your_movie.app
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.test.your_movie.R
 
 class HomeActivity : AppCompatActivity() {
+
+    private lateinit var navigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navController = findNavController(R.id.nav_host_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
-//        setA(findViewById(R.id.app_bar))
-        loadUserFromStorage()
+
+        navigationView = findViewById(R.id.bottom_navigation_home)
+        navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        navigationView.setOnNavigationItemReselectedListener(mOnNavigationItemReSelectedListener)
+        navigationView.visibility = View.GONE
+    }
+
+    fun setBottomNavigationViewVisible() {
+        navigationView.visibility = View.VISIBLE
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -22,34 +33,22 @@ class HomeActivity : AppCompatActivity() {
         return navController.navigateUp()
     }
 
-    private fun loadUserFromStorage() {
-//        val getUser = InternalStorageService(this, object : InternalStorageService.PostExecuteCallback {
-//            override fun doAfter() {
-//                if (InternalStorageService.entryStatus) {
-//                    Handler().postDelayed({
-//                        Const.token = InternalStorageService.user.token
-//                        val intent = Intent(applicationContext, HomeActivity::class.java)
-//                        intent.putExtra("user", InternalStorageService.user)
-//                        startActivity(intent)
-//                        finish()
-//                    }, SPLASH_DISPLAY_LENGTH.toLong())
-//                } else {
-//                    Handler().postDelayed({
-//                        findNavController(R.id.nav_host_fragment).navigate(R.id.action_splashFragment_to_mainFragment)
-//                    }, SPLASH_DISPLAY_LENGTH.toLong())
-//                }
-//            }
-//        })
-//        getUser.setIGetInternalData(GetUserIdAndToken())
-//        getUser.execute()
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.menu_bottom_movie_list -> {
+                findNavController(R.id.nav_host_fragment).navigate(R.id.movieListFragment)
+                item.isChecked = true
+            }
+            R.id.menu_bottom_favorite_movie_list -> {
+                findNavController(R.id.nav_host_fragment).navigate(R.id.favoriteMovieListFragment)
+                item.isChecked = true
+            }
+        }
+        false
     }
 
-    private fun saveUserOnStorage() {
-//        val internalStorageService = InternalStorageService(this, null)
-//        with(mainUserViewModel.getMainUser().value!!) {
-//            internalStorageService.setUserData(id, token, password)
-//        }
-//        internalStorageService.setISetInternalData(SetUserIdAndToken())
-//        internalStorageService.execute()
+    private val mOnNavigationItemReSelectedListener = BottomNavigationView.OnNavigationItemReselectedListener {
+        supportFragmentManager.popBackStackImmediate()
     }
+
 }

@@ -3,7 +3,7 @@ package com.test.your_movie.model
 import java.io.Serializable
 
 data class MovieModel(
-        val movieId: String?,
+        val movieId: String,
         val movieTitle: String?,
         val movieOriginalTitle: String?,
         val voteCount: String?,
@@ -14,5 +14,6 @@ data class MovieModel(
         val posterPath: String?,
         val country: String?,
         val isAdult: Boolean = false,
-        val originalLanguage: String?
+        val originalLanguage: String?,
+        var isFavorite: Boolean = false
 ) : Serializable

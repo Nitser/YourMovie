@@ -4,12 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.test.your_movie.database.dao.MovieDao
 import com.test.your_movie.database.dao.UserDao
+import com.test.your_movie.database.entity.Movie
 import com.test.your_movie.database.entity.User
 
-@Database(entities = [User::class], version = 1)
+@Database(entities = [User::class, Movie::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun movieDao(): MovieDao
 
     companion object {
         @Volatile
@@ -24,7 +27,7 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                         context.applicationContext,
                         AppDatabase::class.java,
-                        "your_movie_db"
+                        "Your_movie_db"
                 ).build()
 
                 INSTANCE = instance

@@ -8,7 +8,7 @@ import java.io.Serializable
 class Movie : Serializable {
     @SerializedName("id")
     @Expose
-    val movieId: String? = null
+    lateinit var movieId: String
 
     @SerializedName("title")
     @Expose

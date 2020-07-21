@@ -18,16 +18,12 @@ import io.reactivex.schedulers.Schedulers
 class MovieListViewModel : ViewModel() {
     private val movieList = MutableLiveData<ArrayList<MovieModel>>()
     private val loadPageNumber = MutableLiveData<Int>()
+
     private val disposable = CompositeDisposable()
     private val movieApi = ApiClient.getClient().create(MovieApi::class.java)
 
     fun getMovieList(): LiveData<ArrayList<MovieModel>> {
         return movieList
-    }
-
-    fun getNextLoadPageNumber(): Int? {
-        loadPageNumber.postValue(loadPageNumber.value?.plus(1))
-        return loadPageNumber.value
     }
 
     fun loadMovieList(releaseYear: Int, callback: MovieListCallback) {

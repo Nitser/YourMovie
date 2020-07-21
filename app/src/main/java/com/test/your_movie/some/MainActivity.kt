@@ -1,14 +1,5 @@
 package com.test.your_movie.some
 
-import androidx.lifecycle.Observer
-import android.content.Context
-import android.net.ConnectivityManager
-import android.os.Bundle
-
-import com.test.your_movie.Interfaces.LiveDataHelper
-import com.test.your_movie.Interfaces.NetworkService
-import com.test.your_movie.R
-
 //class MainActivity : AppCompatActivity() {
 //
 //    private var networkService: NetworkService? = null

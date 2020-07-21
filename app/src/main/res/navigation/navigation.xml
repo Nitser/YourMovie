@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation"
     app:startDestination="@id/entryFragment">
 
     <fragment
         android:id="@+id/entryFragment"
         android:name="com.test.your_movie.ui.entry.EntryFragment"
-        android:label="" >
+        android:label="">
         <action
             android:id="@+id/action_entryFragment_to_singInFragment"
             app:destination="@id/singInFragment" />
@@ -17,7 +19,7 @@
     <fragment
         android:id="@+id/singInFragment"
         android:name="com.test.your_movie.ui.sing_in.SingInFragment"
-        android:label="@string/fragment_sing_in_title" >
+        android:label="@string/fragment_sing_in_title">
         <action
             android:id="@+id/action_singInFragment_to_movieListFragment"
             app:destination="@id/movieListFragment"
@@ -26,7 +28,7 @@
     <fragment
         android:id="@+id/singUpFragment"
         android:name="com.test.your_movie.ui.sing_up.SingUpFragment"
-        android:label="@string/fragment_sing_up_title" >
+        android:label="@string/fragment_sing_up_title">
         <action
             android:id="@+id/action_singUpFragment_to_movieListFragment"
             app:destination="@id/movieListFragment"
@@ -35,7 +37,7 @@
     <fragment
         android:id="@+id/movieListFragment"
         android:name="com.test.your_movie.ui.movie_list.MovieListFragment"
-        android:label="MovieListFragment" >
+        android:label="Список фильмов">
         <action
             android:id="@+id/action_movieListFragment_to_movieInfoFragment"
             app:destination="@id/movieInfoFragment" />
@@ -47,9 +49,13 @@
     <fragment
         android:id="@+id/movieInfoFragment"
         android:name="com.test.your_movie.ui.movie_info.MovieInfoFragment"
-        android:label="MovieInfoFragment" >
+        android:label="">
         <argument
             android:name="movie"
             app:argType="com.test.your_movie.model.MovieModel" />
     </fragment>
+    <fragment
+        android:id="@+id/favoriteMovieListFragment"
+        android:name="com.test.your_movie.ui.favorite_movie_list.FavoriteMovieListFragment"
+        android:label="Сохраненное" />
 </navigation>
