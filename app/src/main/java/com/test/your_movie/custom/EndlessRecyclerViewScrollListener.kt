@@ -1,4 +1,4 @@
-package com.test.your_movie.Interfaces
+package com.test.your_movie.custom
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,7 +29,7 @@ abstract class EndlessRecyclerViewScrollListener(private var mLayoutManager: Lin
     }
 
     // This happens many times a second during a scroll, so be wary of the code you place here.
-    // We are given a few useful parameters to help us work out if we need to load some more data,
+    // We are given a few useful parameters to help us work out if we need to load biometricInit more data,
     // but first we check if we are waiting for the previous load to finish.
     override fun onScrolled(view: RecyclerView, dx: Int, dy: Int) {
         val lastVisibleItemPosition: Int = (mLayoutManager).findLastVisibleItemPosition()
@@ -54,7 +54,7 @@ abstract class EndlessRecyclerViewScrollListener(private var mLayoutManager: Lin
 
         // If it isn’t currently loading, we check to see if we have breached
         // the visibleThreshold and need to reload more data.
-        // If we do need to reload some more data, we execute onLoadMore to fetch the data.
+        // If we do need to reload biometricInit more data, we execute onLoadMore to fetch the data.
         // threshold should reflect how many total columns there are too
         if (!loading && lastVisibleItemPosition + visibleThreshold > totalItemCount) {
             currentPage++

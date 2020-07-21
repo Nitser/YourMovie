@@ -1,5 +1,7 @@
 package com.test.your_movie.utils
 
+import android.util.Base64
+import java.io.UnsupportedEncodingException
 import java.nio.charset.Charset
 import java.security.SecureRandom
 import javax.crypto.Cipher
@@ -8,6 +10,8 @@ import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.PBEKeySpec
 import javax.crypto.spec.SecretKeySpec
 
+/**Класс для шифрования/дешифрования с помощью KeyStore и base64
+ * */
 object SecurePreferenceUtils {
 
     const val SALT = "salt"
@@ -52,6 +56,11 @@ object SecurePreferenceUtils {
         cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec)
         val decrypted = cipher.doFinal(encryptedData)
         return decrypted.toString(Charset.defaultCharset())
+    }
+
+    @Throws(UnsupportedEncodingException::class)
+    fun decodeBase64String(encodedString: String): String {
+        return String(Base64.decode(encodedString.toByteArray(charset("UTF-8")), Base64.DEFAULT))
     }
 
 }

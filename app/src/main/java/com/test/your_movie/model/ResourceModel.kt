@@ -1,6 +1,6 @@
 package com.test.your_movie.model
 
-data class Resource(
+data class ResourceModel(
         val status: Status
 //        val hashMap: HashMap<String, ByteArray>?
 //        val data: T?,

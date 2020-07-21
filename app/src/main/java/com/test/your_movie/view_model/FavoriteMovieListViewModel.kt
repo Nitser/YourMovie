@@ -13,6 +13,9 @@ import com.test.your_movie.model.MovieModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**ViewModel для работы с сохранением/удалением фильмов в телефонном хранилище.
+ * Сейчас сохраненные фильмы одинаковы для всех пользователей, тоже не успела доделать
+ * */
 class FavoriteMovieListViewModel : ViewModel() {
     private lateinit var repository: MovieRepository
     private val favoriteMovieList = MutableLiveData<ArrayList<MovieModel>>()
@@ -57,7 +60,7 @@ class FavoriteMovieListViewModel : ViewModel() {
     fun checkMovieIsSaved(movie: MovieModel) = viewModelScope.launch(Dispatchers.IO) {
         try {
             val resMovie = repository.loadById(movie.movieId.toInt())
-            Log.i("RESSSSS", resMovie.toString())
+            Log.i("FavoriteMovieListVM", resMovie.toString())
             isFavoriteMovie.postValue(resMovie.isFavorite.toBoolean())
         } catch (ex: Exception) {
         }

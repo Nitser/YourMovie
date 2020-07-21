@@ -9,17 +9,18 @@ import androidx.lifecycle.viewModelScope
 import com.test.your_movie.database.AppDatabase
 import com.test.your_movie.database.repository.UserRepository
 import com.test.your_movie.database.entity.User
-import com.test.your_movie.model.Resource
+import com.test.your_movie.model.ResourceModel
 import com.test.your_movie.utils.SecurePreferenceUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**ViewModel для работы с авторизацией/регистрацией*/
 class AuthViewModel : ViewModel() {
 
     private lateinit var repository: UserRepository
-    private val authStatus = MutableLiveData<Resource>()
+    private val authStatus = MutableLiveData<ResourceModel>()
 
-    fun getAuthStatus(): LiveData<Resource> {
+    fun getAuthStatus(): LiveData<ResourceModel> {
         return authStatus
     }
 
@@ -38,15 +39,15 @@ class AuthViewModel : ViewModel() {
             try {
                 val rightPassword = SecurePreferenceUtils.decrypt(password, user.password, user.salt, user.iv)
                 if (rightPassword == password)
-                    authStatus.postValue(Resource(Resource.Status.COMPLETED))
+                    authStatus.postValue(ResourceModel(ResourceModel.Status.COMPLETED))
                 else
-                    authStatus.postValue(Resource(Resource.Status.ERROR))
+                    authStatus.postValue(ResourceModel(ResourceModel.Status.ERROR))
             } catch (ex: Exception) {
-                Log.i("RESS RESS", ex.toString())
-                authStatus.postValue(Resource(Resource.Status.ERROR))
+                Log.i("AuthVM", ex.toString())
+                authStatus.postValue(ResourceModel(ResourceModel.Status.ERROR))
             }
         } else {
-            authStatus.postValue(Resource(Resource.Status.ERROR))
+            authStatus.postValue(ResourceModel(ResourceModel.Status.ERROR))
         }
     }
 
@@ -62,13 +63,13 @@ class AuthViewModel : ViewModel() {
                         encryptPassword[SecurePreferenceUtils.IV]!!
                 )
                 insert(newUser)
-                authStatus.postValue(Resource(Resource.Status.COMPLETED))
+                authStatus.postValue(ResourceModel(ResourceModel.Status.COMPLETED))
             } catch (ex: Exception) {
-                Log.i("RESS RESS", ex.toString())
-                authStatus.postValue(Resource(Resource.Status.ERROR))
+                Log.i("AuthVM", ex.toString())
+                authStatus.postValue(ResourceModel(ResourceModel.Status.ERROR))
             }
         } else {
-            authStatus.postValue(Resource(Resource.Status.ERROR))
+            authStatus.postValue(ResourceModel(ResourceModel.Status.ERROR))
         }
     }
 

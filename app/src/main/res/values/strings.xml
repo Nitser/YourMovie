@@ -35,6 +35,10 @@
     <string name="error_msg_auth_error">Error</string>
     <string name="error_msg_auth_failed">Failed</string>
 
+    <string name="error_msg_no_biometric_hardware">No biometric hardware</string>
+    <string name="error_msg_biometric_hw_unavailable">HW unavailable</string>
+    <string name="error_msg_biometric_not_setup">Biometric not setup</string>
+
     <string name="search_by_albums">Поиск по фильмам…</string>
     <string name="start_search">Начни поиск!</string>
     <string name="release_date">Release date:</string>

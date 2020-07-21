@@ -19,7 +19,8 @@ import com.test.your_movie.ui.movie_list.list.MovieAdapter
 import com.test.your_movie.ui.movie_list.list.MovieHolder
 import com.test.your_movie.view_model.FavoriteMovieListViewModel
 import java.util.Calendar
-
+/**
+ * Экран с сохраненными фильмами*/
 class FavoriteMovieListFragment : Fragment() {
 
     private lateinit var binding: FragmentMovieListBinding

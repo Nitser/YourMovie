@@ -15,6 +15,8 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
+/**ViewModel для получения списка фильмов с сервера и его прослушки
+ * */
 class MovieListViewModel : ViewModel() {
     private val movieList = MutableLiveData<ArrayList<MovieModel>>()
     private val loadPageNumber = MutableLiveData<Int>()

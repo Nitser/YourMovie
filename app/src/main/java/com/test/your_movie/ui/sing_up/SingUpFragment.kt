@@ -15,11 +15,13 @@ import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
 import com.test.your_movie.R
 import com.test.your_movie.databinding.FragmentSingUpBinding
-import com.test.your_movie.model.Resource
-import com.test.your_movie.utils.EncryptionUtils
+import com.test.your_movie.model.ResourceModel
+import com.test.your_movie.utils.SecurePreferenceUtils
 import com.test.your_movie.view_model.AppStateViewModel
 import com.test.your_movie.view_model.AuthViewModel
 
+/**
+ * Экран регистрации с помощью QR-кода*/
 class SingUpFragment : Fragment() {
 
     private lateinit var binding: FragmentSingUpBinding
@@ -33,13 +35,13 @@ class SingUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         authViewModel.init(requireContext())
-        authViewModel.getAuthStatus().observe(viewLifecycleOwner, Observer<Resource> { item ->
+        authViewModel.getAuthStatus().observe(viewLifecycleOwner, Observer<ResourceModel> { item ->
             when (item.status) {
-                Resource.Status.COMPLETED -> {
+                ResourceModel.Status.COMPLETED -> {
                     requireActivity().findNavController(R.id.nav_host_fragment)
                             .navigate(SingUpFragmentDirections.actionSingUpFragmentToMovieListFragment())
                 }
-                Resource.Status.ERROR -> {
+                ResourceModel.Status.ERROR -> {
                     Toast.makeText(requireContext(), "Login is occupied", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -71,7 +73,7 @@ class SingUpFragment : Fragment() {
         if (result != null) {
             if (result.contents != null) {
                 try {
-                    val url = EncryptionUtils.decodeBase64String(result.contents)
+                    val url = SecurePreferenceUtils.decodeBase64String(result.contents)
                     val uri = Uri.parse(url)
                     val login = uri.getQueryParameter("login")
                     val password = uri.getQueryParameter("password")

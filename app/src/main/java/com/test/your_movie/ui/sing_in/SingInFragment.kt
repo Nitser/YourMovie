@@ -12,10 +12,14 @@ import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.test.your_movie.R
 import com.test.your_movie.databinding.FragmentSingInBinding
-import com.test.your_movie.model.Resource
-import com.test.your_movie.utils.ApiFingerUtils
+import com.test.your_movie.model.ResourceModel
+import com.test.your_movie.utils.BiometricUtils
 import com.test.your_movie.view_model.AuthViewModel
 
+/**
+ * Экран авторизации. Есть возможность зайти с помощью отпечатка пальца, который уже есть на телефоне,
+ * или с помощью логина/пароля, которые были зарегистрированы после сканирования QR-кода.
+ * В данной реализации отпечаток пальца не приклеплен к логину/паролю, так как не хватило времени.*/
 class SingInFragment : Fragment() {
 
     private lateinit var binding: FragmentSingInBinding
@@ -28,13 +32,13 @@ class SingInFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         authViewModel.init(requireContext())
-        authViewModel.getAuthStatus().observe(viewLifecycleOwner, Observer<Resource> { item ->
+        authViewModel.getAuthStatus().observe(viewLifecycleOwner, Observer<ResourceModel> { item ->
             when (item.status) {
-                Resource.Status.COMPLETED -> {
+                ResourceModel.Status.COMPLETED -> {
                     requireActivity().findNavController(R.id.nav_host_fragment)
                             .navigate(SingInFragmentDirections.actionSingInFragmentToMovieListFragment())
                 }
-                Resource.Status.ERROR -> {
+                ResourceModel.Status.ERROR -> {
                     Toast.makeText(requireContext(), "Wrong login or password", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -49,7 +53,7 @@ class SingInFragment : Fragment() {
     }
 
     private fun authFinger() {
-        val biometricPrompt = BiometricPrompt(this, ApiFingerUtils.getExecutor(requireContext()),
+        val biometricPrompt = BiometricPrompt(this, BiometricUtils.getExecutor(requireContext()),
                 object : BiometricPrompt.AuthenticationCallback() {
                     override fun onAuthenticationSucceeded(
                             result: BiometricPrompt.AuthenticationResult
@@ -68,6 +72,6 @@ class SingInFragment : Fragment() {
                         ).show()
                     }
                 })
-        ApiFingerUtils.some(requireContext(), biometricPrompt)
+        BiometricUtils.biometricInit(requireContext(), biometricPrompt)
     }
 }

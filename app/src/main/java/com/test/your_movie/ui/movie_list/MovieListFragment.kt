@@ -18,7 +18,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.test.your_movie.Interfaces.EndlessRecyclerViewScrollListener
+import com.test.your_movie.custom.EndlessRecyclerViewScrollListener
 import com.test.your_movie.R
 import com.test.your_movie.app.HomeActivity
 import com.test.your_movie.databinding.FragmentMovieListBinding
@@ -28,6 +28,8 @@ import com.test.your_movie.ui.movie_list.list.MovieHolder
 import com.test.your_movie.view_model.MovieListViewModel
 import java.util.Calendar
 
+/**
+ * Экран со списком фильмов, полученных с сервера*/
 class MovieListFragment : Fragment() {
 
     private lateinit var binding: FragmentMovieListBinding
@@ -125,6 +127,8 @@ class MovieListFragment : Fragment() {
         })
     }
 
+    /**
+     * Создать событие в календаре о просмотре фильма*/
     private fun addCalendarEvent(movie: MovieModel, year: Int, month: Int, day: Int) {
         val cal = Calendar.getInstance()
         cal.set(year, month, day)

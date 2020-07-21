@@ -9,7 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.test.your_movie.R
 import com.test.your_movie.databinding.FragmentEntryBinding
-
+/**
+ * Начальный экран singIn/singUp кнопками
+ * По хорошему тут надо было доставать сохраненные данные вошедшего пользователя, но времени на это не хватило
+ * */
 class EntryFragment : Fragment() {
 
     private lateinit var binding: FragmentEntryBinding

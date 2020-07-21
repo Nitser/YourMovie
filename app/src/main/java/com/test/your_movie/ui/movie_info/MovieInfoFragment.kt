@@ -21,7 +21,8 @@ import com.test.your_movie.app.AppData.MOVIE_BIG_IMAGE_URL
 import com.test.your_movie.databinding.FragmentMovieInfoBinding
 import com.test.your_movie.model.MovieModel
 import com.test.your_movie.view_model.FavoriteMovieListViewModel
-
+/**
+ * Экран с подробной информацией о фильме*/
 class MovieInfoFragment : Fragment() {
 
     private lateinit var binding: FragmentMovieInfoBinding
