@@ -12,7 +12,7 @@
 
     <string name="fragment_sing_up_title">Регистрация</string>
     <string name="fragment_sing_up_description">Здесь информация о том, что регистрация прошла успешно, и теперь можно добавить отпечаток, если хочется</string>
-    <string name="fragment_sing_up_button_done">ГОТОВО</string>
+    <string name="fragment_sing_up_button_qr_scan">СКАНИРОВАНИЕ QR-КОДА</string>
     <string name="fragment_sing_up_button_add_finger">Добавить отпечаток</string>
 
     <string name="fragment_movie_list_no_internet">Нет соединения</string>

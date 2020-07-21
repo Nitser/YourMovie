@@ -16,7 +16,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.test.your_movie.Interfaces.EndlessRecyclerViewScrollListener
-import com.test.your_movie.Models.MovieModel
+import com.test.your_movie.model.MovieModel
 import com.test.your_movie.R
 import com.test.your_movie.databinding.FragmentMovieListBinding
 import com.test.your_movie.ui.movie_list.list.MovieAdapter

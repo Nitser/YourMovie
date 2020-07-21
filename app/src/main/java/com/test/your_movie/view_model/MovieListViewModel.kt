@@ -4,7 +4,7 @@ import android.accounts.NetworkErrorException
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.test.your_movie.Models.MovieModel
+import com.test.your_movie.model.MovieModel
 import com.test.your_movie.app.AppData
 import com.test.your_movie.network.ApiClient
 import com.test.your_movie.network.apiService.MovieApi

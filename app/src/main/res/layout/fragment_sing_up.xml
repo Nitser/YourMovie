@@ -15,21 +15,20 @@
             android:gravity="center_vertical"
             android:padding="10dp">
 
-            <TextView
-                style="@style/LightDescriptionText"
-                android:gravity="center"
-                android:text="@string/fragment_sing_up_description"/>
+<!--            <TextView-->
+<!--                style="@style/LightDescriptionText"-->
+<!--                android:gravity="center"-->
+<!--                android:text="@string/fragment_sing_up_description"/>-->
+
+<!--            <Button-->
+<!--                android:id="@+id/sing_up_button_add_finger"-->
+<!--                style="@style/EmptyButton"-->
+<!--                android:text="@string/fragment_sing_up_button_add_finger" />-->
 
             <Button
-                android:id="@+id/sing_up_button_add_finger"
-                style="@style/EmptyButton"
-                android:text="@string/fragment_sing_up_button_add_finger" />
-
-            <Button
-                android:id="@+id/sing_up_button_done"
-                style="@style/EntryLightButton"
-                android:textColor="@drawable/button_empty_text_light"
-                android:text="@string/fragment_sing_up_button_done" />
+                android:id="@+id/sing_up_button_scan"
+                style="@style/EntryDarkButton"
+                android:text="@string/fragment_sing_up_button_qr_scan" />
 
         </LinearLayout>
 

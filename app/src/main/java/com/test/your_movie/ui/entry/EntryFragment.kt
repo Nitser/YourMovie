@@ -23,7 +23,7 @@ class EntryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.singIn.setOnClickListener {
             requireActivity().findNavController(R.id.nav_host_fragment)
-                .navigate(EntryFragmentDirections.actionEntryFragmentToSingInFragment())
+                    .navigate(EntryFragmentDirections.actionEntryFragmentToSingInFragment())
         }
         binding.singUp.setOnClickListener {
             requireActivity().findNavController(R.id.nav_host_fragment)

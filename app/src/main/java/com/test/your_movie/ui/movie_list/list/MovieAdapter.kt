@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import com.test.your_movie.Models.MovieModel
+import com.test.your_movie.model.MovieModel
 import com.test.your_movie.R
 import com.test.your_movie.app.AppData
 import java.util.ArrayList

@@ -1,4 +1,4 @@
-package com.test.your_movie.Models
+package com.test.your_movie.model
 
 import java.io.Serializable
 
