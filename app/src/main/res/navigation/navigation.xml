@@ -39,9 +39,17 @@
         <action
             android:id="@+id/action_movieListFragment_to_movieInfoFragment"
             app:destination="@id/movieInfoFragment" />
+        <action
+            android:id="@+id/action_movieListFragment_to_entryFragment"
+            app:destination="@id/entryFragment"
+            app:popUpTo="@+id/navigation" />
     </fragment>
     <fragment
         android:id="@+id/movieInfoFragment"
         android:name="com.test.your_movie.ui.movie_info.MovieInfoFragment"
-        android:label="MovieInfoFragment" />
+        android:label="MovieInfoFragment" >
+        <argument
+            android:name="movie"
+            app:argType="com.test.your_movie.model.MovieModel" />
+    </fragment>
 </navigation>

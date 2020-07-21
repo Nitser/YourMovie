@@ -5,6 +5,9 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -16,9 +19,9 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.test.your_movie.Interfaces.EndlessRecyclerViewScrollListener
-import com.test.your_movie.model.MovieModel
 import com.test.your_movie.R
 import com.test.your_movie.databinding.FragmentMovieListBinding
+import com.test.your_movie.model.MovieModel
 import com.test.your_movie.ui.movie_list.list.MovieAdapter
 import com.test.your_movie.ui.movie_list.list.MovieHolder
 import com.test.your_movie.view_model.MovieListViewModel
@@ -30,9 +33,34 @@ class MovieListFragment : Fragment() {
     private lateinit var adapter: MovieAdapter
     private val movieListViewModel: MovieListViewModel by activityViewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_home, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_home_exit -> {
+                activity!!.findNavController(R.id.nav_host_fragment)
+                        .navigate(MovieListFragmentDirections.actionMovieListFragmentToEntryFragment())
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
         binding = FragmentMovieListBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         binding.movieList.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(requireContext())
@@ -41,7 +69,7 @@ class MovieListFragment : Fragment() {
         adapter = MovieAdapter(object : MovieAdapter.OnItemClickListener {
             override fun onItemClick(item: MovieModel, id: Int, boardHolder: MovieHolder) {
                 requireActivity().findNavController(R.id.nav_host_fragment)
-                        .navigate(MovieListFragmentDirections.actionMovieListFragmentToMovieInfoFragment())
+                        .navigate(MovieListFragmentDirections.actionMovieListFragmentToMovieInfoFragment(item))
             }
         }, object : MovieAdapter.OnItemClickListener {
             override fun onItemClick(item: MovieModel, id: Int, boardHolder: MovieHolder) {
@@ -51,7 +79,6 @@ class MovieListFragment : Fragment() {
                 val day = cal.get(Calendar.DAY_OF_MONTH)
 
                 val dateSetListener = DatePickerDialog.OnDateSetListener { _, yearDate, monthDate, dayOfMonth ->
-                    //save like notification
                     addCalendarEvent(item, yearDate, monthDate, dayOfMonth)
                 }
 
@@ -68,26 +95,23 @@ class MovieListFragment : Fragment() {
         val scrollListener = object : EndlessRecyclerViewScrollListener(layoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
                 binding.load.visibility = View.VISIBLE
-                loadMovieList(page + 1)
+                loadMovieList()
             }
         }
         binding.movieList.addOnScrollListener(scrollListener)
 
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        movieListViewModel.getBoardList().observe(viewLifecycleOwner, Observer<ArrayList<MovieModel>> { item ->
-            adapter.movies = item
+        movieListViewModel.getMovieList().observe(viewLifecycleOwner, Observer<ArrayList<MovieModel>> { item ->
+            adapter.movies.clear()
+            adapter.movies.addAll(item)
             adapter.notifyDataSetChanged()
         })
-
-        loadMovieList(1)
+        if (movieListViewModel.getMovieList().value.isNullOrEmpty()) {
+            loadMovieList()
+        }
     }
 
-    private fun loadMovieList(page: Int) {
-        movieListViewModel.loadMovieList(2020, page, object : MovieListViewModel.MovieListCallback {
+    private fun loadMovieList() {
+        movieListViewModel.loadMovieList(2020, object : MovieListViewModel.MovieListCallback {
             override fun onSuccess() {
                 binding.load.visibility = View.INVISIBLE
             }

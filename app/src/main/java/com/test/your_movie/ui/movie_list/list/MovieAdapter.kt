@@ -5,18 +5,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import com.test.your_movie.model.MovieModel
 import com.test.your_movie.R
 import com.test.your_movie.app.AppData
+import com.test.your_movie.model.MovieModel
 import java.util.ArrayList
 
 class MovieAdapter(private val infoListener: OnItemClickListener, private val scheduleListener: OnItemClickListener) : RecyclerView.Adapter<MovieHolder>() {
     var movies: ArrayList<MovieModel> = ArrayList()
-        set(value) {
-            movies.clear()
-            movies.addAll(value)
-            notifyDataSetChanged()
-        }
 
     init {
         setHasStableIds(true)

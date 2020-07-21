@@ -4,8 +4,8 @@ import android.accounts.NetworkErrorException
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.test.your_movie.model.MovieModel
 import com.test.your_movie.app.AppData
+import com.test.your_movie.model.MovieModel
 import com.test.your_movie.network.ApiClient
 import com.test.your_movie.network.apiService.MovieApi
 import com.test.your_movie.network.model.movie.Movie
@@ -17,20 +17,28 @@ import io.reactivex.schedulers.Schedulers
 
 class MovieListViewModel : ViewModel() {
     private val movieList = MutableLiveData<ArrayList<MovieModel>>()
+    private val loadPageNumber = MutableLiveData<Int>()
     private val disposable = CompositeDisposable()
     private val movieApi = ApiClient.getClient().create(MovieApi::class.java)
 
-    fun getBoardList(): LiveData<ArrayList<MovieModel>> {
+    fun getMovieList(): LiveData<ArrayList<MovieModel>> {
         return movieList
     }
 
-    fun setBoardList(newBoardList: ArrayList<MovieModel>) {
-        movieList.postValue(newBoardList)
+    fun getNextLoadPageNumber(): Int? {
+        loadPageNumber.postValue(loadPageNumber.value?.plus(1))
+        return loadPageNumber.value
     }
 
-    fun loadMovieList(releaseYear: Int, page: Int, callback: MovieListCallback) {
+    fun loadMovieList(releaseYear: Int, callback: MovieListCallback) {
+        val page = if (loadPageNumber.value == null) {
+            loadPageNumber.postValue(1)
+            1
+        } else
+            loadPageNumber.value?.plus(1)
+
         disposable.add(
-                movieApi.movieList(releaseYear, AppData.apiKey, page)
+                movieApi.movieList(releaseYear, AppData.apiKey, page!!)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<MovieResponse>() {
@@ -41,8 +49,11 @@ class MovieListViewModel : ViewModel() {
                                     if (!res.isNullOrEmpty())
                                         movieList.postValue(ArrayList(res))
                                 } else {
-                                    if (!res.isNullOrEmpty())
-                                        movieList.value?.addAll(ArrayList(res))
+                                    if (!res.isNullOrEmpty()) {
+                                        val list = movieList.value
+                                        list?.addAll(ArrayList(res))
+                                        movieList.postValue(list)
+                                    }
                                 }
                                 callback.onSuccess()
                             }

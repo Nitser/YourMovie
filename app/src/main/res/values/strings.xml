@@ -19,6 +19,7 @@
 
     <string name="fragment_movie_list_button_more_info">More Info</string>
     <string name="fragment_movie_list_button_schedule">Schedule viewing</string>
+    <string name="menu_home_exit">Выход</string>
 
     <string name="auth_title">Schedule viewing</string>
     <string name="auth_subtitle">Schedule viewing</string>
