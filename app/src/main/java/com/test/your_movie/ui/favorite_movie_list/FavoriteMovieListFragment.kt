@@ -10,9 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.test.your_movie.R
-import com.test.your_movie.app.HomeActivity
 import com.test.your_movie.databinding.FragmentMovieListBinding
 import com.test.your_movie.model.MovieModel
 import com.test.your_movie.ui.movie_list.list.MovieAdapter
@@ -29,7 +29,6 @@ class FavoriteMovieListFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
         binding = FragmentMovieListBinding.inflate(inflater, container, false)
-        (requireActivity() as HomeActivity).setBottomNavigationViewVisible()
         return binding.root
     }
 
@@ -41,8 +40,8 @@ class FavoriteMovieListFragment : Fragment() {
 
         adapter = MovieAdapter(object : MovieAdapter.OnItemClickListener {
             override fun onItemClick(item: MovieModel, id: Int, boardHolder: MovieHolder) {
-//                requireActivity().findNavController(R.id.nav_host_fragment)
-//                        .navigate(MovieListFragmentDirections.actionMovieListFragmentToMovieInfoFragment(item))
+                requireActivity().findNavController(R.id.nav_host_fragment)
+                        .navigate(FavoriteMovieListFragmentDirections.actionFavoriteMovieListFragmentToMovieInfoFragment(item))
             }
         }, object : MovieAdapter.OnItemClickListener {
             override fun onItemClick(item: MovieModel, id: Int, boardHolder: MovieHolder) {

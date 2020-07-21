@@ -47,6 +47,7 @@ class MovieListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_home_exit -> {
+                (requireActivity() as HomeActivity).setBottomNavigationViewVisible(false)
                 activity!!.findNavController(R.id.nav_host_fragment)
                         .navigate(MovieListFragmentDirections.actionMovieListFragmentToEntryFragment())
                 return true
@@ -58,7 +59,7 @@ class MovieListFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
         binding = FragmentMovieListBinding.inflate(inflater, container, false)
-        (requireActivity() as HomeActivity).setBottomNavigationViewVisible()
+        (requireActivity() as HomeActivity).setBottomNavigationViewVisible(true)
         return binding.root
     }
 

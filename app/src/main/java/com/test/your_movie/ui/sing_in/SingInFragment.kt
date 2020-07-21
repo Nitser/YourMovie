@@ -59,17 +59,6 @@ class SingInFragment : Fragment() {
                                 .navigate(SingInFragmentDirections.actionSingInFragmentToMovieListFragment())
                     }
 
-                    override fun onAuthenticationError(
-                            errorCode: Int, errString: CharSequence
-                    ) {
-                        super.onAuthenticationError(errorCode, errString)
-                        Toast.makeText(
-                                requireContext(),
-                                getString(R.string.error_msg_auth_error),
-                                Toast.LENGTH_SHORT
-                        ).show()
-                    }
-
                     override fun onAuthenticationFailed() {
                         super.onAuthenticationFailed()
                         Toast.makeText(

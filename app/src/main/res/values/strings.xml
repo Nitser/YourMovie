@@ -28,9 +28,9 @@
     <string name="fragment_movie_info_default_description">No description</string>
     <string name="menu_movie_info_favorite">Favorite</string>
 
-    <string name="auth_title">Schedule viewing</string>
-    <string name="auth_subtitle">Schedule viewing</string>
-    <string name="auth_description">Schedule viewing</string>
+    <string name="auth_title">Биометрическая аутентификация</string>
+    <string name="auth_subtitle"> </string>
+    <string name="auth_description"> </string>
 
     <string name="error_msg_auth_error">Error</string>
     <string name="error_msg_auth_failed">Failed</string>

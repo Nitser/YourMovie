@@ -22,7 +22,7 @@
         android:label="@string/fragment_sing_in_title">
         <action
             android:id="@+id/action_singInFragment_to_movieListFragment"
-            app:destination="@id/movieListFragment"
+            app:destination="@id/menu_bottom_movie_list"
             app:popUpTo="@+id/navigation" />
     </fragment>
     <fragment
@@ -31,11 +31,11 @@
         android:label="@string/fragment_sing_up_title">
         <action
             android:id="@+id/action_singUpFragment_to_movieListFragment"
-            app:destination="@id/movieListFragment"
+            app:destination="@id/menu_bottom_movie_list"
             app:popUpTo="@+id/navigation" />
     </fragment>
     <fragment
-        android:id="@+id/movieListFragment"
+        android:id="@+id/menu_bottom_movie_list"
         android:name="com.test.your_movie.ui.movie_list.MovieListFragment"
         android:label="Список фильмов">
         <action
@@ -55,7 +55,11 @@
             app:argType="com.test.your_movie.model.MovieModel" />
     </fragment>
     <fragment
-        android:id="@+id/favoriteMovieListFragment"
+        android:id="@+id/menu_bottom_favorite_movie_list"
         android:name="com.test.your_movie.ui.favorite_movie_list.FavoriteMovieListFragment"
-        android:label="Сохраненное" />
+        android:label="Сохраненное" >
+        <action
+            android:id="@+id/action_favoriteMovieListFragment_to_movieInfoFragment"
+            app:destination="@id/movieInfoFragment" />
+    </fragment>
 </navigation>
